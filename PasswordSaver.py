@@ -4,8 +4,9 @@ import sqlite3
 
 root = Tk()
 root.title('Password Saver')
-root.iconbitmap('C:/Users/Abdelrahman Hesham/Desktop/PythonTkinter/images.ico')
-root.geometry('360x220')
+root.iconbitmap('images.ico')
+root.geometry('360x280')
+root.configure(bg="snow")
 
 #database
 
@@ -56,27 +57,32 @@ def query():
     
     conn. commit()
     conn.close()
+
+#title
+title = Label(root, text = "PASS801ORG", font=('Impact', 40), bg="snow")
+title.grid(row=0, column=0, columnspan=2, padx=10)
+
 #create Entries
 website_name = Entry(root, width=30)
-website_name.grid(row=0, column=1, padx=20, pady=5)
+website_name.grid(row=1, column=1, padx=20, pady=5)
 username = Entry(root, width=30)
-username.grid(row=1, column=1, padx=20, pady=5)
+username.grid(row=2, column=1, padx=20, pady=5)
 password = Entry(root, width=30)
-password.grid(row=2, column=1, padx=20, pady=5)
+password.grid(row=3, column=1, padx=20, pady=5)
 
 #create labels
-website_name_label = Label(root, text="Website name")
-website_name_label.grid(row=0, column=0, padx=20, pady=10)
-username_label = Label(root, text="username")
-username_label.grid(row=1, column=0, padx=20, pady=5)
-password_label = Label(root, text="password")
-password_label.grid(row=2, column=0, padx=20, pady=5)
+website_name_label = Label(root, text="Website name", bg="snow")
+website_name_label.grid(row=1, column=0, padx=20, pady=10)
+username_label = Label(root, text="username", bg="snow")
+username_label.grid(row=2, column=0, padx=20, pady=5)
+password_label = Label(root, text="password", bg="snow")
+password_label.grid(row=3, column=0, padx=20, pady=5)
 
 submit = Button(root, text= "Add to database", command= submitData, width=42)
-submit.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+submit.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 databasebtn = Button(root, text= "Show database", command= query, width=42)
-databasebtn.grid(row=4, column=0, columnspan=2, padx=10, pady=0)
+databasebtn.grid(row=5, column=0, columnspan=2, padx=10, pady=0)
 
 conn. commit()
 conn.close()
