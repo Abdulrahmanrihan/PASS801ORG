@@ -1,11 +1,12 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from tkinter.scrolledtext import ScrolledText
 import sqlite3
 
 root = Tk()
 root.title('Password Saver')
 root.iconbitmap('images.ico')
-root.geometry('360x280')
+root.geometry('360x580')
 root.configure(bg="snow")
 
 #database
@@ -50,10 +51,11 @@ def query():
 
     print_data=''
     for record in data:
-        print_data += str(record) + '\n'
+        print_data += str(record[0]) + ' \n ' + str(record[1]) + ' \n ' + str(record[2]) + '\n\n'
         
-    query_table = Label(root, text=print_data)
-    query_table.grid(row=5,column=0, columnspan=2)
+    query_table = ScrolledText(master=root, width=35, bg="snow")
+    query_table.grid(row=6,column=0, columnspan=2, pady =20)
+    query_table.insert(INSERT, print_data)
     
     conn. commit()
     conn.close()
